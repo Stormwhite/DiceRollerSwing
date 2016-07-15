@@ -154,8 +154,11 @@ public class DiceRollerGUI extends javax.swing.JFrame {
 
     private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
         // TODO add your handling code here:
-        int diceType = 0;
+        //Declare variables
+        int diceAmount = 0; //Number of dice (from textField)
+        int diceType = 0; //Type of dice (from RadioButtons)
         ArrayList<String> resultsList = new ArrayList<>();
+        //Check which RadioButton is in use - is there an easier way to do this?
         if (d100RadioButton.isSelected()) {
             diceType = 100;
         }
@@ -180,12 +183,31 @@ public class DiceRollerGUI extends javax.swing.JFrame {
         else if (d8RadioButton.isSelected()) {
             diceType = 8;
         }
-        int diceAmount = Integer.parseInt(dieNumber.getText());
+        else {
+            resultLabel.setText("Please select a type of die"); //Remind the user to select a type of die if none is selected
+            return;
+        }
+       try {
+        diceAmount = Integer.parseInt(dieNumber.getText()); //Acquire number of dice from JTextField
+       }
+       catch (NumberFormatException e) {
+           resultLabel.setText("That's not even a number. Please use a number.");
+           return;
+       }
+        if (diceAmount == 0) {
+            resultLabel.setText("You can't roll zero dice, silly.");//I know, I'm hilarious.
+            return;
+        } else if (diceAmount > 15) {
+            resultLabel.setText("It says maximum number fifteen for a reason, you know!");
+            return;
+        }
+        //Actually rolling the dice and inputting them into an ArrayList
         for (int i = 0; i < diceAmount; i++) {
-            int die = (int) (Math.random() * diceType) +1;
+            int die = (int) (Math.random() * diceType) +1; 
             String result = String.valueOf(die);
             resultsList.add(result);
         }
+        //Converting the ArrayList into an array and then into a string.
         String[] resultsFinal = new String[resultsList.size()];
         resultsFinal = resultsList.toArray(resultsFinal);
         resultLabel.setText(Arrays.toString(resultsFinal));
