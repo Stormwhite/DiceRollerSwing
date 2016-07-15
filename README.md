@@ -1,7 +1,7 @@
 # DiceRollerSwing
 Small dice roller application written using the Netbeans GUI builder
 
-Looking to port this onto android and upgrade it to full animation eventually (basically a game), but that's a while off. 
+Looking to port this onto Android and upgrade it to full animation eventually (basically a game), but that's a while off. 
 
 If the basic Android port isn't up in the next month it's because I've concussed myself in exasperation over trying to make a GUI that 
 doesn't look awful. I'd say two weeks, but I'm fully aware of my lack of ability in the area.
