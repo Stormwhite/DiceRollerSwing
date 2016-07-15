@@ -198,7 +198,7 @@ public class DiceRollerGUI extends javax.swing.JFrame {
             resultLabel.setText("You can't roll zero dice, silly.");//I know, I'm hilarious.
             return;
         } else if (diceAmount > 15) {
-            resultLabel.setText("It says maximum number fifteen for a reason, you know.");
+            resultLabel.setText("It says maximum number fifteen for a reason, you know!");
             return;
         }
         //Actually rolling the dice and inputting them into an ArrayList
